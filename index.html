@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎲 ONE桌遊軟體設定教學 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+        }
+        
+        .tip {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning {
+            background: rgba(255, 87, 34, 0.1);
+            border-left: 4px solid #ff5722;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .search-box {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            font-size: 1em;
+        }
+        
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+        
+        nav button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        nav button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #764ba2;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card:hover {
+            background: rgba(102, 126, 234, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .feature-title {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .step {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #764ba2;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        code {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .badge-important { background: #ff5722; color: white; }
+        .badge-optional { background: #4caf50; color: white; }
+        .badge-advanced { background: #ff9800; color: white; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+            .container { padding: 15px; }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #666;
+            border-top: 2px solid rgba(102, 126, 234, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 ONE桌遊自助管理系統</h1>
+            <p class="subtitle">軟體設定完全教學 | 2025年最新版</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜尋功能、設定、問題...（例如：包廂設定、會員管理、藍新金流）" onkeyup="searchContent()">
+        </div>
+
+        <nav>
+            <button onclick="scrollToSection('basic')">🏪 基礎設定</button>
+            <button onclick="scrollToSection('room')">🚪 包廂管理</button>
+            <button onclick="scrollToSection('payment')">💰 金流設定</button>
+            <button onclick="scrollToSection('member')">👥 會員管理</button>
+            <button onclick="scrollToSection('faq')">❓ 常見問題</button>
+            <button onclick="scrollToSection('troubleshoot')">🔧 問題排除</button>
+        </nav>
+
+        <!-- 基礎設定 -->
+        <section id="basic">
+            <h2>🏪 基礎設定</h2>
+            
+            <div class="feature-card">
+                <div class="feature-title">1. 店家資料設定 <span class="badge badge-important">必填</span></div>
+                <p><strong>設定項目：</strong></p>
+                <ul>
+                    <li>📍 店家地址</li>
+                    <li>📞 店家電話</li>
+                    <li>📸 店家封面照片</li>
+                    <li>💳 繳費機照片</li>
+                </ul>
+                <div class="tip">
+                    💡 <strong>提醒：</strong>每個功能設定完成後，記得點選「儲存」按鈕！
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">2. 套餐設定 <span class="badge badge-optional">建議設定</span></div>
+                <p><strong>什麼是套餐？</strong></p>
+                <p>消費者在預訂包廂時，可以直接點選套餐進行結帳。</p>
+                
+                <p><strong>設定欄位說明：</strong></p>
+                <ul>
+                    <li><strong>套餐名稱：</strong>最多6個字，會顯示在客人端</li>
+                    <li><strong>價格：</strong>套餐販售的價格</li>
+                    <li><strong>常見設定時間：</strong>1小時、2小時、4小時、6小時</li>
+                    <li><strong>開始時間 & 結束時間：</strong>設定這段時間可以販售的套餐</li>
+                    <li><strong>狀態：</strong>啟用/停用</li>
+                    <li><strong>時間範圍：</strong>可購買幾張套餐的時間（常用於早鳥優惠）</li>
+                </ul>
+                
+                <div class="warning">
+                    ⚠️ <strong>注意：</strong>套餐時間設定會影響客人能預訂的時段，請謹慎設定！
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">3. 員工帳號設定 <span class="badge badge-important">必填</span></div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>新增員工帳號</strong>
+                    <ul>
+                        <li>電話號碼：4~8位數字都可以</li>
+                        <li>如果新增失敗，代表號碼已被註冊，請更換號碼</li>
+                        <li>權限角色：選擇上方權限管理中你所新增的角色（員工身份設置）</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>設定權限角色</strong>
+                    <ul>
+                        <li>可設定員工開放的權限功能有哪些</li>
+                        <li>常見設置：店長、老闆、客服</li>
+                        <li>店家可設置員工同時管理多家店</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>員工登入資訊</strong>
+                    <ul>
+                        <li><strong>帳號：</strong>你設定的電話號碼（4~8位）</li>
+                        <li><strong>密碼：</strong>預設 <code>666666</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 包廂管理 -->
+        <section id="room">
+            <h2>🚪 包廂管理</h2>
+            
+            <div class="tip">
+                💡 <strong>提醒：</strong>包廂會由ONE桌遊團隊先幫大家開好！
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">包廂設定項目</div>
+                
+                <ul>
+                    <li><strong>時間類型：</strong>可設定多種時間類型，相同類型的包廂，消費者可自行更換位置（店家端沒有限定）</li>
+                    <li><strong>包廂狀態：</strong>
+                        <ul>
+                            <li>一般：正常營運</li>
+                            <li>待打掃：員工不小心點到已完成但未打掃，可將狀態改回「待打掃」，員工則可在點選「開始打掃」</li>
+                            <li>故障：包廂故障不開放給客人使用</li>
+                        </ul>
+                    </li>
+                    <li><strong>費用：</strong>每小時多少錢（必須設定）</li>
+                    <li><strong>排序：</strong>包廂在後台的順序，數字越小越前面</li>
+                    <li><strong>添加套餐：</strong>將步驟二設定的套餐加在包廂上</li>
+                    <li><strong>包廂類型：</strong>
+                        <ul>
+                            <li>獨立包廂：選擇「獨立」</li>
+                            <li>開放式：選擇「半開放」</li>
+                        </ul>
+                    </li>
+                    <li><strong>添加包廂照片</strong></li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                ⚠️ <strong>自動清潔機制：</strong>更換包廂後，原包廂會在10分鐘後自動斷電，並進入「待打掃」狀態。
+            </div>
+        </section>
+
+        <!-- 金流設定 -->
+        <section id="payment">
+            <h2>💰 金流設定</h2>
+
+            <div class="feature-card">
+                <div class="feature-title">藍新金流申請流程 <span class="badge badge-important">必要設定</span></div>
+                
+                <h3>📋 申請前準備</h3>
+                <ol>
+                    <li>ONE桌遊APP上的「店家名稱」先填寫好</li>
+                    <li>ONE桌遊APP上的「店家電話」需先寫好</li>
+                    <li>準備照片：
+                        <ul>
+                            <li>店家外觀照</li>
+                            <li>包廂照片 x2</li>
+                            <li>公共區域照片</li>
+                            <li>價目表</li>
+                        </ul>
+                    </li>
+                    <li><strong>個人申請：</strong>個人證件 + 存摺照片</li>
+                    <li><strong>公司戶申請：</strong>營業登記文件 + 負責人個人證件 + 公司存摺照片</li>
+                </ol>
+
+                <h3>🏢 企業型 vs 個人型差別</h3>
+                <ul>
+                    <li><strong>企業型：</strong>信用卡額度 100萬（需有公司營業登記及公司銀行帳戶）</li>
+                    <li><strong>個人型：</strong>信用卡額度 10萬</li>
+                </ul>
+
+                <h3>⚙️ 填寫時常見問題</h3>
+                <ol>
+                    <li>客服電話必須與APP上的電話相同</li>
+                    <li>收款帳戶必須與申請人相同</li>
+                    <li>販售類型：<code>實體商品</code></li>
+                    <li>商店簡介：<code>包廂式自助桌遊 出租包廂空間 以小時計算</code></li>
+                </ol>
+
+                <div class="warning">
+                    ⚠️ <strong>重要設定：</strong>紅色框起來的部分，請記得設為隱藏，此部分交易入款時間比較慢，會造成系統無法當下判斷有收到款項。
+                </div>
+
+                <h3>💳 撥款說明</h3>
+                <ul>
+                    <li>藍新收到款項後，依設定天數撥款到「藍新帳戶」</li>
+                    <li>「藍新帳戶」的錢，固定每週三會撥款到你設定的銀行帳戶</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">LINE PAY 申請 <span class="badge badge-optional">選用</span></div>
+                
+                <p><strong>📧 申請方式：</strong>準備好資料後，發送 Email 給業務協助辦理</p>
+                <ul>
+                    <li><strong>Email：</strong><code>anthony.shinje@linecorp.com</code></li>
+                    <li><strong>郵件名稱：</strong>ONE桌遊合作店家-XXXXXX（店家名稱）</li>
+                    <li><strong>手續費：</strong>2.31％含稅 (2.2%未稅)</li>
+                    <li><strong>撥款：</strong>每兩個工作天撥款</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">儲值優惠設定 <span class="badge badge-optional">選用</span></div>
+                
+                <p><strong>設定方式：</strong>儲值多少錢，贈送多少（例如：儲值5000送1000）</p>
+                
+                <div class="tip">
+                    💡 <strong>提醒：</strong>繳費機儲值時，在後台設定預計被儲值的金額，需以50元為倍數，否則消費者無法付款。
+                </div>
+            </div>
+        </section>
+
+        <!-- 會員管理 -->
+        <section id="member">
+            <h2>👥 會員管理</h2>
+
+            <div class="feature-card">
+                <div class="feature-title">會員等級規則 <span class="badge badge-optional">選用</span></div>
+                
+                <p>可設置不同等級自動折扣金額。</p>
+                
+                <p><strong>常見使用方式：</strong>將客人手動設為黑卡會員，當作是簽約廠商或老闆優惠。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">會員卡券管理</div>
+                
+                <h3>🎟️ 電子票卷（用戶付費購買）</h3>
+                <p><strong>設定項目：</strong></p>
+                <ul>
+                    <li>在套餐、金額中設定的時長</li>
+                    <li>可限定販售的數量</li>
+                    <li>使用期限：使用在預約或續時才可使用</li>
+                </ul>
+                
+                <p><strong>常用類型：</strong></p>
+                <ul>
+                    <li><strong>續時卷：</strong>例如「1小時」只限於續時使用，期限用完（贈送使用）</li>
+                    <li><strong>活動卷：</strong>例如「小包廂12小時電子票卷」可使用一年，售價1500元，限售10張</li>
+                </ul>
+
+                <h3>🎫 優惠卷（用戶可在APP上免費領取）</h3>
+                <p><strong>設置方式：</strong></p>
+                <ul>
+                    <li>消費滿多少元，折扣多少元（例如：滿600折50元）</li>
+                    <li>每人限領10張</li>
+                    <li>可免費領取，設定久期限、使用完畢</li>
+                </ul>
+                
+                <div class="tip">
+                    💡 <strong>補充說明：</strong>項目7（優惠卷）跟項目8（電子票卷）都可設置在「活動優惠」，也可在會員管理直接贈送給會員。
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">會員功能操作</div>
+                
+                <ul>
+                    <li><strong>發放卡卷：</strong>發送電子票卷、優惠卷給會員</li>
+                    <li><strong>用戶卡卷：</strong>查看會員擁有的卡卷</li>
+                    <li><strong>回收用戶卡卷</strong></li>
+                    <li><strong>儲值：</strong>手動幫用戶儲值額度（記得在「經手人」上打勾儲存）</li>
+                    <li><strong>扣款：</strong>手動幫用戶扣款額度（記得在「經手人」上打勾儲存）</li>
+                    <li><strong>代開包廂：</strong>幫用戶開包廂、下訂單</li>
+                    <li><strong>歷史訂單：</strong>查看所有消費紀錄</li>
+                    <li><strong>消費明細：</strong>所有扣款資訊</li>
+                    <li><strong>搜尋手機號碼：</strong>輸入完整號碼搜尋</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">會員備註功能</div>
+                
+                <ul>
+                    <li><strong>客人暱稱：</strong>方便店家辨識客人（看不到，但會顯示在訂單頁面）</li>
+                    <li><strong>生日日期：</strong>店家權限可變更，客人沒有權限</li>
+                    <li><strong>備註：</strong>可註記較長的文字（客人看不到）</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section id="faq">
+            <h2>❓ 常見問題</h2>
+
+            <div class="feature-card">
+                <div class="feature-title">Q1: 新訂單，付款時間保留多久？</div>
+                <p><strong>A:</strong> 顧客下訂單後，座位保留 <strong>10分鐘</strong>，需在10分鐘內付款完成。超過10分鐘，系統則自動取消訂單。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q2: 顧客同時可以訂幾個訂單？</div>
+                <p><strong>A:</strong></p>
+                <ul>
+                    <li><strong>已付款訂單：</strong>可以預訂多張訂單</li>
+                    <li><strong>未付款訂單：</strong>只能一筆。如已經有一筆待付款訂單，在選擇新訂單時，舊訂單會自動刪除。</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q3: 客戶使用線上支付，並且超過10分鐘，會怎麼樣？</div>
+                <p><strong>A:</strong> 使用藍新付款（信用卡、ATM、超商付款），藍新系統預設時間是一天。</p>
+                <p>如果超過時間付款，系統會自動將客人的錢入到餘額，請顧客直接用餘額預約即可。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q4: 更換包廂後，原包廂電還亮著？</div>
+                <p><strong>A:</strong> 更換包廂後，原包廂會在 <strong>10分鐘後</strong> 自動斷電，並進入「待打掃」的狀態。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q5: 顧客沒付款可以預約嗎？</div>
+                <p><strong>A:</strong> 顧客無付款，無法進行預約並保留座位，除非店家手動保留。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q6: 自動確認到店 vs 提前確認到店的區別？</div>
+                <p><strong>A:</strong></p>
+                <ul>
+                    <li><strong>自動確認到店：</strong>預約訂單遲到15分鐘後，系統將自動確認到店（顧慮到後續還有訂單）</li>
+                    <li><strong>提前確認到店：</strong>客人最多可以提早一小時確認到店</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q7: 訂單跟訂單之間，為什麼需要間隔30分鐘？</div>
+                <p><strong>A:</strong> 假設現有訂單是到19:00結束，客人需訂購在19:30分之後。</p>
+                <p><strong>原因：</strong></p>
+                <ul>
+                    <li>自動到店的15分鐘（顧客遲到）</li>
+                    <li>消費結束還會晚10分鐘天花板燈才關燈</li>
+                    <li>合計是25分鐘，所以才有晚30分鐘預約的限制</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q8: 顧客現有訂單，繳費機續時付款到一半，時間到會怎樣？</div>
+                <p><strong>A:</strong> 付款到一半時間到，會強制結束目前付款，並將已投入的錢退幣給會員。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Q9: 現有待使用訂單，如按退款，是退到哪邊？</div>
+                <p><strong>A:</strong> 自動退款到顧客的餘額，顧客可再自行下單。</p>
+                <p><strong>如顧客要求退回現金：</strong></p>
+                <ol>
+                    <li>匯款到客人帳戶</li>
+                    <li>到會員管理的會員帳戶，進行扣款，並存入線下</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 問題排除 -->
+        <section id="troubleshoot">
+            <h2>🔧 問題排除</h2>
+
+            <div class="feature-card">
+                <div class="feature-title">繳費機使用管理</div>
+                
+                <h3>首次使用設定</h3>
+                <p>需配合實體繳費機硬幣數量。</p>
+                <p><strong>範例：</strong>假設繳費機有200個硬幣，數字填寫200，按確認。</p>
+                <p>結帳時再放入多少硬幣，請填寫在「補幣處」。</p>
+                
+                <h3>記錄功能</h3>
+                <p>此頁會紀錄所有繳費機有收到現金的狀態及硬幣數量等。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">後台首頁功能</div>
+                
+                <ol>
+                    <li>查看每個座位即時狀態，且未來24小時的預約狀況</li>
+                    <li>查看昨日、今日、本月收入</li>
+                    <li>可點選日期查詢之前紀錄或之後的預約訂單狀況</li>
+                    <li>上方可以切換店家</li>
+                </ol>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">訂單管理</div>
+                
+                <ul>
+                    <li><strong>待使用：</strong>可以更改訂單時間、位置</li>
+                    <li><strong>進行中：</strong>可以延長時間、縮短時間、更改位置</li>
+                    <li>點擊藍色電話號碼或名稱，可跳到會員管理</li>
+                    <li>點擊藍色按鈕，可查看訂單詳細資訊</li>
+                </ul>
+                
+                <div class="tip">
+                    💡 <strong>訂單時間顯示說明：</strong>
+                    <ul>
+                        <li>訂單在00~30分結束，顯示為半格</li>
+                        <li>訂單在31~60分結束，顯示為整格</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">出入紀錄</div>
+                
+                <p>如果大門搭配磁力鎖，可在此查看出入紀錄。</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">長期訂位管理 <span class="badge badge-advanced">進階功能</span></div>
+                
+                <p>可在會員管理中，使用該會員長期購買座位。</p>
+                
+                <p><strong>範例：</strong>每週三晚上8~10點，A包廂，日期從114年3月1日~114年3月31日。</p>
+                
+                <p>系統會將預約的座位都劃位，並於當天才生成訂單給會員。</p>
+                
+                <p><strong>常見使用情境：</strong></p>
+                <ul>
+                    <li>主動營銷型店家使用此功能</li>
+                    <li>也有店家使用此功能，讓該包廂在夜間時段不讓客人可預購買使用（占位置用）</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>📱 ONE桌遊自助管理系統</p>
+            <p>最後更新：2025年3月 | 版本：v1.0</p>
+            <p>如有任何問題，請聯繫客服或ONE桌遊團隊</p>
+        </footer>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function searchContent() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const sections = document.querySelectorAll('.feature-card, .step');
+            
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(input) || input === '') {
+                    section.style.display = 'block';
+                    section.style.background = text.includes(input) && input !== '' ? 
+                        'rgba(255, 235, 59, 0.2)' : 'white';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
