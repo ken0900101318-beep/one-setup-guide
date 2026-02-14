@@ -34,6 +34,18 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 15px;
             margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .header-mascot {
+            max-width: 150px;
+            margin: 0 auto 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         h1 {
@@ -46,6 +58,52 @@
         .subtitle {
             color: rgba(255, 255, 255, 0.9);
             font-size: 1.1em;
+        }
+        
+        /* 圖片樣式 */
+        .screenshot {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .screenshot:hover {
+            transform: scale(1.02);
+        }
+        
+        .screenshot-small {
+            max-width: 300px;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .screenshot-grid img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+        }
+        
+        .screenshot-grid img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .image-caption {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
         }
         
         .tip {
@@ -201,6 +259,9 @@
             h1 { font-size: 1.8em; }
             h2 { font-size: 1.4em; }
             .container { padding: 15px; }
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         footer {
@@ -215,6 +276,7 @@
 <body>
     <div class="container">
         <header>
+            <img src="images/system/ip-character.png" alt="ONE桌遊吉祥物" class="header-mascot">
             <h1>🎲 ONE桌遊自助管理系統</h1>
             <p class="subtitle">軟體設定完全教學 | 2025年最新版</p>
         </header>
@@ -224,13 +286,74 @@
         </div>
 
         <nav>
+            <button onclick="scrollToSection('preview')">📱 系統預覽</button>
             <button onclick="scrollToSection('basic')">🏪 基礎設定</button>
             <button onclick="scrollToSection('room')">🚪 包廂管理</button>
             <button onclick="scrollToSection('payment')">💰 金流設定</button>
             <button onclick="scrollToSection('member')">👥 會員管理</button>
             <button onclick="scrollToSection('faq')">❓ 常見問題</button>
-            <button onclick="scrollToSection('troubleshoot')">🔧 問題排除</button>
         </nav>
+
+        <!-- 系統介面預覽 -->
+        <section id="preview">
+            <h2>📱 系統介面預覽</h2>
+            
+            <div class="feature-card">
+                <div class="feature-title">用戶端 APP 介面</div>
+                <p>這是消費者使用的 APP 介面，簡潔易懂，操作流暢。</p>
+                
+                <div class="screenshot-grid">
+                    <div>
+                        <img src="images/ui/01-login.png" alt="登入畫面">
+                        <p class="image-caption">登入畫面</p>
+                    </div>
+                    <div>
+                        <img src="images/ui/02-homepage.png" alt="首頁">
+                        <p class="image-caption">首頁</p>
+                    </div>
+                    <div>
+                        <img src="images/ui/03-store-detail.png" alt="店鋪詳情">
+                        <p class="image-caption">店鋪詳情</p>
+                    </div>
+                    <div>
+                        <img src="images/ui/04-booking.png" alt="立即預訂">
+                        <p class="image-caption">立即預訂</p>
+                    </div>
+                    <div>
+                        <img src="images/ui/05-profile.png" alt="個人中心">
+                        <p class="image-caption">個人中心</p>
+                    </div>
+                    <div>
+                        <img src="images/ui/06-orders.png" alt="訂單列表">
+                        <p class="image-caption">訂單列表</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">店家實景展示</div>
+                <p>以下是加盟店家的實際包廂與環境照片。</p>
+                
+                <div class="screenshot-grid">
+                    <div>
+                        <img src="images/store/room-01.jpg" alt="包廂1">
+                        <p class="image-caption">標準包廂</p>
+                    </div>
+                    <div>
+                        <img src="images/store/room-02.jpg" alt="包廂2">
+                        <p class="image-caption">中型包廂</p>
+                    </div>
+                    <div>
+                        <img src="images/store/room-vip.jpg" alt="VIP包廂">
+                        <p class="image-caption">VIP包廂</p>
+                    </div>
+                    <div>
+                        <img src="images/store/public-area.jpg" alt="公共區域">
+                        <p class="image-caption">公共區域</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- 基礎設定 -->
         <section id="basic">
@@ -251,27 +374,12 @@
             </div>
 
             <div class="feature-card">
-                <div class="feature-title">2. 套餐設定 <span class="badge badge-optional">建議設定</span></div>
-                <p><strong>什麼是套餐？</strong></p>
-                <p>消費者在預訂包廂時，可以直接點選套餐進行結帳。</p>
+                <div class="feature-title">2. 員工登入帳號設定 <span class="badge badge-important">必填</span></div>
                 
-                <p><strong>設定欄位說明：</strong></p>
-                <ul>
-                    <li><strong>套餐名稱：</strong>最多6個字，會顯示在客人端</li>
-                    <li><strong>價格：</strong>套餐販售的價格</li>
-                    <li><strong>常見設定時間：</strong>1小時、2小時、4小時、6小時</li>
-                    <li><strong>開始時間 & 結束時間：</strong>設定這段時間可以販售的套餐</li>
-                    <li><strong>狀態：</strong>啟用/停用</li>
-                    <li><strong>時間範圍：</strong>可購買幾張套餐的時間（常用於早鳥優惠）</li>
-                </ul>
+                <p><strong>登入方式說明：</strong></p>
                 
-                <div class="warning">
-                    ⚠️ <strong>注意：</strong>套餐時間設定會影響客人能預訂的時段，請謹慎設定！
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">3. 員工帳號設定 <span class="badge badge-important">必填</span></div>
+                <img src="images/system/qrcode-login.png" alt="掃碼登入教學" class="screenshot">
+                <p class="image-caption">掃描 QR Code 快速登入商家端後台</p>
                 
                 <div class="step">
                     <span class="step-number">1</span>
@@ -300,6 +408,26 @@
                         <li><strong>帳號：</strong>你設定的電話號碼（4~8位）</li>
                         <li><strong>密碼：</strong>預設 <code>666666</code></li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">3. 套餐設定 <span class="badge badge-optional">建議設定</span></div>
+                <p><strong>什麼是套餐？</strong></p>
+                <p>消費者在預訂包廂時，可以直接點選套餐進行結帳。</p>
+                
+                <p><strong>設定欄位說明：</strong></p>
+                <ul>
+                    <li><strong>套餐名稱：</strong>最多6個字，會顯示在客人端</li>
+                    <li><strong>價格：</strong>套餐販售的價格</li>
+                    <li><strong>常見設定時間：</strong>1小時、2小時、4小時、6小時</li>
+                    <li><strong>開始時間 & 結束時間：</strong>設定這段時間可以販售的套餐</li>
+                    <li><strong>狀態：</strong>啟用/停用</li>
+                    <li><strong>時間範圍：</strong>可購買幾張套餐的時間（常用於早鳥優惠）</li>
+                </ul>
+                
+                <div class="warning">
+                    ⚠️ <strong>注意：</strong>套餐時間設定會影響客人能預訂的時段，請謹慎設定！
                 </div>
             </div>
         </section>
@@ -470,16 +598,6 @@
                     <li><strong>搜尋手機號碼：</strong>輸入完整號碼搜尋</li>
                 </ul>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-title">會員備註功能</div>
-                
-                <ul>
-                    <li><strong>客人暱稱：</strong>方便店家辨識客人（看不到，但會顯示在訂單頁面）</li>
-                    <li><strong>生日日期：</strong>店家權限可變更，客人沒有權限</li>
-                    <li><strong>備註：</strong>可註記較長的文字（客人看不到）</li>
-                </ul>
-            </div>
         </section>
 
         <!-- 常見問題 -->
@@ -512,21 +630,7 @@
             </div>
 
             <div class="feature-card">
-                <div class="feature-title">Q5: 顧客沒付款可以預約嗎？</div>
-                <p><strong>A:</strong> 顧客無付款，無法進行預約並保留座位，除非店家手動保留。</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">Q6: 自動確認到店 vs 提前確認到店的區別？</div>
-                <p><strong>A:</strong></p>
-                <ul>
-                    <li><strong>自動確認到店：</strong>預約訂單遲到15分鐘後，系統將自動確認到店（顧慮到後續還有訂單）</li>
-                    <li><strong>提前確認到店：</strong>客人最多可以提早一小時確認到店</li>
-                </ul>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">Q7: 訂單跟訂單之間，為什麼需要間隔30分鐘？</div>
+                <div class="feature-title">Q5: 訂單跟訂單之間，為什麼需要間隔30分鐘？</div>
                 <p><strong>A:</strong> 假設現有訂單是到19:00結束，客人需訂購在19:30分之後。</p>
                 <p><strong>原因：</strong></p>
                 <ul>
@@ -537,12 +641,7 @@
             </div>
 
             <div class="feature-card">
-                <div class="feature-title">Q8: 顧客現有訂單，繳費機續時付款到一半，時間到會怎樣？</div>
-                <p><strong>A:</strong> 付款到一半時間到，會強制結束目前付款，並將已投入的錢退幣給會員。</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">Q9: 現有待使用訂單，如按退款，是退到哪邊？</div>
+                <div class="feature-title">Q6: 現有待使用訂單，如按退款，是退到哪邊？</div>
                 <p><strong>A:</strong> 自動退款到顧客的餘額，顧客可再自行下單。</p>
                 <p><strong>如顧客要求退回現金：</strong></p>
                 <ol>
@@ -552,78 +651,10 @@
             </div>
         </section>
 
-        <!-- 問題排除 -->
-        <section id="troubleshoot">
-            <h2>🔧 問題排除</h2>
-
-            <div class="feature-card">
-                <div class="feature-title">繳費機使用管理</div>
-                
-                <h3>首次使用設定</h3>
-                <p>需配合實體繳費機硬幣數量。</p>
-                <p><strong>範例：</strong>假設繳費機有200個硬幣，數字填寫200，按確認。</p>
-                <p>結帳時再放入多少硬幣，請填寫在「補幣處」。</p>
-                
-                <h3>記錄功能</h3>
-                <p>此頁會紀錄所有繳費機有收到現金的狀態及硬幣數量等。</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">後台首頁功能</div>
-                
-                <ol>
-                    <li>查看每個座位即時狀態，且未來24小時的預約狀況</li>
-                    <li>查看昨日、今日、本月收入</li>
-                    <li>可點選日期查詢之前紀錄或之後的預約訂單狀況</li>
-                    <li>上方可以切換店家</li>
-                </ol>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">訂單管理</div>
-                
-                <ul>
-                    <li><strong>待使用：</strong>可以更改訂單時間、位置</li>
-                    <li><strong>進行中：</strong>可以延長時間、縮短時間、更改位置</li>
-                    <li>點擊藍色電話號碼或名稱，可跳到會員管理</li>
-                    <li>點擊藍色按鈕，可查看訂單詳細資訊</li>
-                </ul>
-                
-                <div class="tip">
-                    💡 <strong>訂單時間顯示說明：</strong>
-                    <ul>
-                        <li>訂單在00~30分結束，顯示為半格</li>
-                        <li>訂單在31~60分結束，顯示為整格</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">出入紀錄</div>
-                
-                <p>如果大門搭配磁力鎖，可在此查看出入紀錄。</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title">長期訂位管理 <span class="badge badge-advanced">進階功能</span></div>
-                
-                <p>可在會員管理中，使用該會員長期購買座位。</p>
-                
-                <p><strong>範例：</strong>每週三晚上8~10點，A包廂，日期從114年3月1日~114年3月31日。</p>
-                
-                <p>系統會將預約的座位都劃位，並於當天才生成訂單給會員。</p>
-                
-                <p><strong>常見使用情境：</strong></p>
-                <ul>
-                    <li>主動營銷型店家使用此功能</li>
-                    <li>也有店家使用此功能，讓該包廂在夜間時段不讓客人可預購買使用（占位置用）</li>
-                </ul>
-            </div>
-        </section>
-
         <footer>
             <p>📱 ONE桌遊自助管理系統</p>
-            <p>最後更新：2025年3月 | 版本：v1.0</p>
+            <p>最後更新：2025年3月 | 版本：v2.0 圖文版</p>
+            <p>所有圖片版權屬於 ONE桌遊 所有</p>
             <p>如有任何問題，請聯繫客服或ONE桌遊團隊</p>
         </footer>
     </div>
